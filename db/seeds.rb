@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
+=begin
 require 'random_data'
 
 50.times do
@@ -23,6 +23,10 @@ posts = Post.all
 		body: RandomData.random_paragraph
 	)
 end
+=end
+
+post = Post.find_or_create_by!(title: "My Unique Post", body: "My unique post body")
+Comment.find_or_create_by!(post: post, body: "My unique comment body")
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
