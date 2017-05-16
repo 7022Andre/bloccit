@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 	let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "password") }
+	let(:user_lower_case) { User.create!(name: "bloccit user", email: "user@bloccit.com", password: "password") }
 
 	it { is_expected.to validate_presence_of(:name) }
 	it { is_expected.to validate_length_of(:name).is_at_least(1) }
@@ -18,6 +19,10 @@ RSpec.describe User, type: :model do
 	describe "attributes" do
 		it "should have name and email" do
 			expect(user).to have_attributes(name: "Bloccit User", email: "user@bloccit.com")
+		end
+
+		it "should title case user name" do
+			expect(user_lower_case.name).to eq("Bloccit User")
 		end
 	end
 
