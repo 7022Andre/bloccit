@@ -18,10 +18,11 @@
       <% if current_user %>
         <li class="pull-right"><%= link_to "Sign Out", session_path(current_user), method: :delete %></li>
         <li class="pull-right" style="line-height: 41px;"><%= current_user.name %></li>
-         <% else %>
-           <li class="pull-right"><%= link_to "Sign In", new_session_path %></li>
-           <li class="pull-right"><%= link_to "Sign Up", new_user_path %></li>
-         <% end %>
+        <img class='profile-pic pull-right' src='<%= avatar_url(current_user) %>'>
+      <% else %>
+        <li class="pull-right"><%= link_to "Sign In", new_session_path %></li>
+        <li class="pull-right"><%= link_to "Sign Up", new_user_path %></li>
+      <% end %>
     </ul>
 
     <% if flash[:notice] %>
