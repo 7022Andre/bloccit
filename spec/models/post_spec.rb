@@ -10,6 +10,8 @@ RSpec.describe Post, type: :model do
 	let(:user) { User.create!(name: "Bloccit User", email:"user@bloccit.com", password:"password")}
 	let(:post) { topic.posts.create!(title: title, body: body, user: user) }
 
+	it { is_expected.to have_many(:comments) }
+
 	it { is_expected.to validate_presence_of(:title)}
 	it { is_expected.to validate_presence_of(:body)}
 	it { is_expected.to validate_presence_of(:topic)}
