@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-	has_many :posts
-	has_many :comments
+	has_many :posts, dependent: :destroy
+	has_many :comments, dependent: :destroy
+	has_many :votes, dependent: :destroy
 
 	before_save { self.email = email.downcase if email.present? }
 	before_save { self.role ||= :member } # same as self.role = :member if self.role.nil?
@@ -9,9 +10,9 @@ class User < ApplicationRecord
 	validates :password, presence: true, length: { minimum: 6 }, if: "password_digest.nil?"
 	validates :password, length: { minimum: 6 }, allow_blank: true
 	validates :email,
-	           presence: true,
-	           uniqueness: { case_sensitive: false },
-	           length: { minimum: 5, maximum: 254 }
+			   presence: true,
+			   uniqueness: { case_sensitive: false },
+			   length: { minimum: 5, maximum: 254 }
 
 	 has_secure_password
 
