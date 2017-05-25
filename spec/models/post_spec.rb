@@ -29,6 +29,13 @@ RSpec.describe Post, type: :model do
 		end
 	end
 
+	describe "#create_vote" do
+	 	it "adds an upvote to post after creation" do
+	 		expect(post.up_votes).to eq(1)
+	 		expect(post.points).to eq(1)
+	 	end
+	end
+
 	describe "voting" do
 		before do
 			3.times { post.votes.create!(value: 1, user: user) }
