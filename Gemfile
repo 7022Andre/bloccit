@@ -5,7 +5,7 @@ ruby '2.4.0'
 gem 'rails', '5.0.2'
 
 group :production do
-	gem 'pg'
+	
 	gem 'rails_12factor'
 end
 
@@ -23,6 +23,7 @@ end
 
 gem 'bootstrap-sass'
 gem 'bcrypt'
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -34,3 +35,4 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks', '~> 5'
+gem 'figaro', '1.0'
