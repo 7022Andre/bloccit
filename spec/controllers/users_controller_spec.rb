@@ -57,8 +57,9 @@ RSpec.describe UsersController, type: :controller do
 			expect(session[:user_id]).to eq assigns(:user).id
 		end
 	end
+
 	describe "not signed in" do
-		let(:factory_user) { create(:user) }
+		let(:factory_user) {create(:user)}
 
 		before do
 			post :create, user: new_user_attributes
